@@ -1,0 +1,38 @@
+Microsoft Windows [Version 10.0.19045.3693]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\marsh>E:
+
+E:\>cd MCA\SEM 2\JAVA PROGRAMMING (MCA202)
+
+E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)>dir
+ Volume in drive E is New Volume
+ Volume Serial Number is 5094-71B1
+
+ Directory of E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)
+
+05-12-2023  22:44    <DIR>          .
+05-12-2023  22:44    <DIR>          ..
+05-12-2023  22:44               148 First.java
+26-11-2023  21:41               119 sample.java
+               2 File(s)            267 bytes
+               2 Dir(s)  97,584,582,656 bytes free
+
+E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)>javac First.java
+
+E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)>dir
+ Volume in drive E is New Volume
+ Volume Serial Number is 5094-71B1
+
+ Directory of E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)
+
+05-12-2023  22:45    <DIR>          .
+05-12-2023  22:45    <DIR>          ..
+05-12-2023  22:45               434 First.class
+05-12-2023  22:44               148 First.java
+26-11-2023  21:41               119 sample.java
+               3 File(s)            701 bytes
+               2 Dir(s)  97,584,582,656 bytes free
+
+E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)>java First
+Welcome to JAVA PROGRAMMING...
