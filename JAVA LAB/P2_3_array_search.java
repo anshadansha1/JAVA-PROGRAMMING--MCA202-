@@ -31,7 +31,7 @@ public class P2_3_array_search{
             n=Integer.parseInt(din.readLine());
             a =new int[n]; //array initialization
             System.out.println("Enter "+n+" values : ");
-
+            
             for(i=0;i<n;i++){
                 a[i]=Integer.parseInt(din.readLine());
             }
