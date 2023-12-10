@@ -28,8 +28,9 @@ public class P2_5_2Darray_sum{
                 rowsum=0;
                 for(j=0;j<cols;j++){
                     rowsum=rowsum+a[i][j];
+                    System.out.print("\t"+a[i][j]);
                 }
-                System.out.println("Sum of row "+(i+1)+" = "+rowsum);
+                System.out.println(" | "+rowsum);
             }
             
             for(i=0;i<cols;i++){
@@ -37,7 +38,7 @@ public class P2_5_2Darray_sum{
                 for(j=0;j<rows;j++){
                     colsum=colsum+a[j][i];
                 }
-                System.out.println("Sum of column "+(i+1)+" = "+colsum);
+                System.out.print("\t"+colsum);
             }
         }
         catch(Exception e){
