@@ -1,4 +1,4 @@
-//Interfaces : It contains function prototypes with no Body.
+//PROGRAM :Invoking only methods in the Intreface
 import java.util.*;
 
 //interface
