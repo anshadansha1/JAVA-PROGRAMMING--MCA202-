@@ -27,7 +27,7 @@ class Person_pass2{
 class Teacher_pass2 extends Person_pass2{
     String subj;
     public Teacher_pass2(int a,String n,String s){
-        super(a,n); //SUPER FUNCTION:to pass value from derived class constructor to base class constructor
+        super(a,n); //SUPER FUNCTION:to pass value from derived class constructor to base class constructor.
         subj = s;
     }
     public void disp(){
@@ -46,6 +46,15 @@ public class P8_pass_from_derivedtobase {
             t.disp();
     }
 }
+
+//NOTE[.........Super function should be the first statement before the derived class constructor]
+/*SUPER OBJECT VS SUPER FUNCTION :
+----------------------------------
+>Super Object : [Used to access any public data members or member functions from a derived class]
+>Super Function :  [Used to pass the value from derived class constructor to base class constructor]
+*/
+
+
 
 /*OUTPUT:
 E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)\class notes>java P8_pass_from_derivedtobase
