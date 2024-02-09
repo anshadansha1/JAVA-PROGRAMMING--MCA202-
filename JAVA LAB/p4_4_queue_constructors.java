@@ -1,3 +1,4 @@
+//PROGRAM 4_4 :  Using constructors, implement the operations of a queue.
 import java.io.*;
 
 class Queue{
@@ -37,7 +38,7 @@ class Queue{
     }
 
 }
-public class p4_4_queue_constructors {
+public class P4_4_queue_constructors {
     public static void main(String args[]){
         Integer num,option;
         DataInputStream din = new DataInputStream(System.in);
@@ -58,7 +59,7 @@ public class p4_4_queue_constructors {
                             if (queue.enqueue(num)) {
                                 System.out.println("Enqueued");
                             } else {
-                                System.out.println("Queue Full");
+                                System.out.println("Queue Full.Cannot Enqueue");
                             }
                             break;
     
@@ -89,3 +90,4 @@ public class p4_4_queue_constructors {
 
     }
 }
+

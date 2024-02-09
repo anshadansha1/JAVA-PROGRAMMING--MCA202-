@@ -8,7 +8,7 @@ import java.util.*;
 class Person2{
     int age;
     String name;
-    public void readp(){
+    public void read(){
         Scanner s = new Scanner(System.in);
         try{
             System.out.println("\nEnter Name and Age : ");
@@ -27,8 +27,8 @@ class Person2{
 
 class Teacher2 extends Person2{
     String subj;
-    public void readt(){
-        super.readp(); //SUPER OBJECT : is used to overcome method overriding
+    public void read(){
+        super.read(); //SUPER OBJECT : is used to overcome method overriding
         Scanner s = new Scanner(System.in);
         try{
             System.out.println("\nEnter the subject : ");
@@ -39,7 +39,7 @@ class Teacher2 extends Person2{
         }
     }
 
-    public void dispt(){
+    public void disp(){
         super.disp();//SUPER OBJECT : is used to overcome method overriding
         System.out.println("\nSubject : "+subj);
     }
@@ -52,11 +52,10 @@ public class P6_function_overrinding {
         Teacher2 t;
         p = new Person2();
         t = new Teacher2();
-        p.readp();
-        t.readt();
-        t.readp();
+        p.read();
+        t.read();
         p.disp();
         t.disp();
-        t.dispt();
+
     }
 }
