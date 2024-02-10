@@ -1,63 +1,89 @@
-import java.io.*;
+import java.util.Scanner;
 
-class Employee {
-    int eno;
-    String ename;
-    double esal;
+// Interface Shape
+interface Shape {
+    void disp(); // Prototype to display the shape
+    double calc(); // Prototype to calculate volume
+}
 
-    void readDetails() throws IOException {
-        DataInputStream dis = new DataInputStream(System.in);
-        System.out.println("Enter employee number (eno): ");
-        eno = Integer.parseInt(dis.readLine());
-        System.out.println("Enter employee name (ename): ");
-        ename = dis.readLine();
-        System.out.println("Enter employee salary (esal): ");
-        esal = Double.parseDouble(dis.readLine());
+// Class Circle implementing Shape interface
+class Circle implements Shape {
+    double radius;
+
+    // Constructor
+    public Circle(double radius) {
+        this.radius = radius;
     }
 
-    void displayDetails() {
-        System.out.println("Employee Details:");
-        System.out.println("Employee Number (eno): " + eno);
-        System.out.println("Employee Name (ename): " + ename);
-        System.out.println("Employee Salary (esal): " + esal);
+    // Implementation of disp() method
+    public void disp() {
+        System.out.println("This is a Circle.");
+    }
+
+    // Implementation of calc() method
+    public double calc() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Class Rectangle implementing Shape interface
+class Rectangle implements Shape {
+    double length, width;
+
+    // Constructor
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Implementation of disp() method
+    public void disp() {
+        System.out.println("This is a Rectangle.");
+    }
+
+    // Implementation of calc() method
+    public double calc() {
+        return length * width;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            DataInputStream dis = new DataInputStream(System.in);
-            System.out.println("Enter the number of employees: ");
-            int n = Integer.parseInt(dis.readLine());
-            Employee[] employees = new Employee[n];
-            // Accepting information of n employees
-            for (int i = 0; i < n; i++) {
-                employees[i] = new Employee();
-                employees[i].readDetails();
-            }
-            // Displaying the details of all employees
-            System.out.println("\nDetails of all employees:");
-            for (Employee employee : employees) {
-                employee.displayDetails();
-                System.out.println("----------------------");
-            }
-            // Searching for an employee using eno
-            System.out.println("\nEnter the employee number to search: ");
-            int searchEno = Integer.parseInt(dis.readLine());
-            boolean found = false;
-            for (Employee employee : employees) {
-                if (employee.eno == searchEno) {
-                    System.out.println("\nEmployee found!");
-                    employee.displayDetails();
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                System.out.println("\nEmployee with eno " + searchEno + " not found.");
-            }
-        } catch (IOException e) {
-            System.out.println("Error: " + e);
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        double radius, length, width;
+
+        System.out.println("Select a shape:");
+        System.out.println("1. Circle");
+        System.out.println("2. Rectangle");
+        System.out.print("Enter your choice: ");
+        choice = scanner.nextInt();
+
+        Shape shape = null; // Reference of Shape interface
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter the radius of the circle: ");
+                radius = scanner.nextDouble();
+                shape = new Circle(radius); // Creating object of Circle class
+                break;
+            case 2:
+                System.out.print("Enter the length of the rectangle: ");
+                length = scanner.nextDouble();
+                System.out.print("Enter the width of the rectangle: ");
+                width = scanner.nextDouble();
+                shape = new Rectangle(length, width); // Creating object of Rectangle class
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                System.exit(0);
         }
+
+        if (shape != null) {
+            shape.disp(); // Calling disp() method depending on user choice
+            System.out.println("Volume: " + shape.calc()); // Calling calc() method depending on user choice
+        }
+
+        scanner.close();
     }
 }
