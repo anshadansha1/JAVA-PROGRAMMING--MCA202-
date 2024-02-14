@@ -1,0 +1,66 @@
+Microsoft Windows [Version 10.0.22621.2428]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ccl26>E:
+
+E:\>cd MUHAMMAD ANSHAD P A\JAVA\project_anshad
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>javac Hello.java
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>java Hello
+Hello World!
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>dir
+ Volume in drive E is STUDENTS
+ Volume Serial Number is 76BB-296A
+
+ Directory of E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad
+
+06-12-2023  14:12    <DIR>          .
+06-12-2023  14:06    <DIR>          ..
+06-12-2023  14:11               416 Hello.class
+06-12-2023  14:09               133 Hello.java
+06-12-2023  14:12               450 OUTPUT.txt
+               3 File(s)            999 bytes
+               2 Dir(s)  580,609,368,064 bytes free
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>
+
+
+[[----------TO DELETE ALL CLASS FILES IN SPECIFIC DIRECTORY---------]]
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>del *.class
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>dir
+ Volume in drive E is STUDENTS
+ Volume Serial Number is 76BB-296A
+
+ Directory of E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad
+
+06-12-2023  14:13    <DIR>          .
+06-12-2023  14:06    <DIR>          ..
+06-12-2023  14:09               133 Hello.java
+06-12-2023  14:13               999 OUTPUT.txt
+               2 File(s)          1,132 bytes
+               2 Dir(s)  580,609,363,968 bytes free
+
+
+
+----------------------------------------------------------------------------------------------------
+
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>javac P1_sum.java
+Note: P1_sum.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>java P1_sum
+Enter first number :
+10
+Enter the second number :
+20
+Sum of two numbers is =  30
+
+E:\MUHAMMAD ANSHAD P A\JAVA\project_anshad>
+
+----------------------------------------------------------------------------------------------------
