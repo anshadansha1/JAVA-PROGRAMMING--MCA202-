@@ -25,10 +25,19 @@ public class P26_threading {
         CThread t1, t2;
         t1 = new CThread(100);
         t2 = new CThread(150);
+
+        
         System.out.println("\nBefore Thread");
         t1.start();//
         System.out.println("\nBetween Thread");
         t2.start();
+        
+        try {
+            t1.join();
+            t2.join();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         System.out.println("\nAfter Thread");
     }
 }

@@ -23,7 +23,7 @@ public class P27_threading2 {
         CThread2 t1, t2;
         Thread p, q;
         t1 = new CThread2(100);
-        t2 = new CThread2(150);
+        t2 = new CThread2(150 );
         p = new Thread(t1);
         q = new Thread(t2);
         System.out.println("\nBefore Thread");
