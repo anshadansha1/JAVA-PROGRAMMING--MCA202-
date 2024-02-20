@@ -14,9 +14,9 @@ public class P54_db_update {
         Scanner s = new Scanner(System.in);
         try{
             Class.forName("com.mysql.jdbc.Driver");//loads the MySQL JDBC (Java Database Connectivity) driver class into memory
-            con = DriverManager.getConnection("jdbc:mysql://local:3306/ems_db?characterEncoding=utf8","root","");//create a connection to the database specified in the URL 
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ems_db?characterEncoding=utf8","root","");//create a connection to the database specified in the URL 
             st = con.createStatement(); //creates a 'Statement' object that can be used to execute SQL queries against the database.
-            System.out.println("\nEnter no,name and Salary :");
+            System.out.println("\nEnter no,name and Salary to update :");
             no =s.nextInt();
             s.nextLine();
             name = s.nextLine();
@@ -36,3 +36,17 @@ public class P54_db_update {
 
     }    
 }
+
+/*OUTPUT :
+ E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)\class notes>java P54_db_update
+
+Enter no,name and Salary :
+23
+Hrishi
+9000
+
+update emp set ename ='Hrishi',esal=9000.0 where eno =23
+
+One record is Updated.
+
+ */

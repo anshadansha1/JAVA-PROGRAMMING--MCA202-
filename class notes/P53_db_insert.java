@@ -14,7 +14,7 @@ public class P53_db_insert {
         Scanner s = new Scanner(System.in);
         try{
             Class.forName("com.mysql.jdbc.Driver");//loads the MySQL JDBC (Java Database Connectivity) driver class into memory
-            con = DriverManager.getConnection("jdbc:mysql://local:3306/ems_db?characterEncoding=utf8","root","");//create a connection to the database specified in the URL 
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ems_db?characterEncoding=utf8","root","");//create a connection to the database specified in the URL 
             st = con.createStatement(); //creates a 'Statement' object that can be used to execute SQL queries against the database.
             System.out.println("\nEnter no,name and Salary :");
             no =s.nextInt();
@@ -36,3 +36,16 @@ public class P53_db_insert {
 
     }    
 }
+
+/* OUTPUT 
+ E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)\class notes>java P53_db_insert
+
+Enter no,name and Salary :
+8642
+Sreekumar
+7000
+
+insert into emp values (8642,'Sreekumar',7000.0)
+
+One record is Inserted.
+ */
