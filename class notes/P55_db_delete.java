@@ -1,4 +1,4 @@
-//PROGRAM :Connection of Database:Insert 
+//PROGRAM :Connection of Database:Delete 
 import java.io.*;
 import java.util.*;
 import java.sql.*;
