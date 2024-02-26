@@ -16,26 +16,49 @@ public class P59_db_login_validation {
             String password = s.nextLine();
 
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/3306/ems_db?characterEncoding=utf8","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ems_db?characterEncoding=utf8","root","");
             st = con.createStatement();
 
-            String str = "SELECT * FROM emp WHERE username =  '"+ username + "' AND password = '" + password + "';";
-            rs.st.executeQuery(str);
+            String str = "SELECT * FROM emp_login WHERE username ='"+ username + "' AND password = '" + password + "';";
+            rs = st.executeQuery(str);
 
             if(rs.next()){
-                System.out.println("\nAuthetication Successfull.Valid Credentials");
+                System.out.println("\nAuthetication Successfull.\nValid Credentials !");
             }
             else{
-                System.out.println("\nAuthetication Failed.Invalid Credentials!");
+                System.out.println("\nAuthetication Failed.\nInvalid Credentials !");
             }
-        }
-        catch(Exception e){
-            System.out.println("\nError : "+e);
-        }
-        finally{
             rs.close();
             st.close();
             con.close();
         }
+        catch(Exception e){
+            System.out.println("\nError : "+e);
+        }
     }    
 }
+
+/*
+ OUTPUT :
+ E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)\class notes>java P59_db_login_validation
+
+Enter Username :
+asdas
+
+Enter Password :
+231
+
+Authetication Failed.
+Invalid Credentials !
+
+E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)\class notes>java P59_db_login_validation
+
+Enter Username :
+anshadansha1
+
+Enter Password :
+1234
+
+Authetication Successfull.
+Valid Credentials !
+ */
