@@ -19,7 +19,7 @@ public class Student implements Serializable{
 //PROGRAM : Serializaion
 import java.io.*;
 
-public class P_64_serialization1_student {
+public class P64_serialization1_student {
     public static void main(String args[])throws Exception {
         Student s1 = new Student(101,"Anshad Muhammad");
         FileOutputStream fout = new FileOutputStream("f.txt"); //To create a file
