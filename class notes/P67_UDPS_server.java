@@ -1,20 +1,22 @@
-//PROGRAM : USER DATAGRAM PROTOCOL Server program
+//PROGRAM : USER DATAGRAM PROTOCOL Server program:  UDP is a connectionless protocol
 
+//This program listens on port 1234, receives a packet from the client,
+// prints the data received along with the client's port, and then sends a reply back to the client.
 import java.net.*;
 import java.io.*;
 
 public class P67_UDPS_server {
     public static void main(String args[]){
-        DatagramSocket ds = null; //
-        DatagramPacket dp = null,reply;
+        DatagramSocket ds = null; // used to create a socket for sending and receiving UDP 
+        DatagramPacket dp = null,reply; //used to represent a packet of data in the  UDP communication
         try{
             ds = new DatagramSocket(1234);
-            byte[] buffer = new byte[1000];//array
-            dp = new DatagramPacket(buffer,buffer.length);
+            byte[] buffer = new byte[1000];//declares a byte array
+            dp = new DatagramPacket(buffer,buffer.length);//creating a object with the specified buffer and its length.
             ds.receive(dp);
-            System.out.println("\nFrom client : "+(new String(dp.getDate())).trim());
+            System.out.println("\nFrom client : "+(new String(dp.getData())).trim());
             System.out.println("\nClient PORT : "+dp.getPort());
-            reply =new DatagramPacket("From Server OK".getBytes(),"From Server OK".Length(),dp.getAddress(),dp.getPort());
+            reply =new DatagramPacket("From Server OK".getBytes(),"From Server OK".length(),dp.getAddress(),dp.getPort());
             ds.send(reply);
         }
         catch(SocketException e){
@@ -31,3 +33,4 @@ public class P67_UDPS_server {
         }
     }
 }
+
