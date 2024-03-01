@@ -13,10 +13,12 @@ public class P67_UDPS_server {
             ds = new DatagramSocket(1234);
             byte[] buffer = new byte[1000];//declares a byte array
             dp = new DatagramPacket(buffer,buffer.length);//creating a object with the specified buffer and its length.
-            ds.receive(dp);
+            ds.receive(dp); //wait until a UDP packet is received on the socket
+
             System.out.println("\nFrom client : "+(new String(dp.getData())).trim());
             System.out.println("\nClient PORT : "+dp.getPort());
             reply =new DatagramPacket("From Server OK".getBytes(),"From Server OK".length(),dp.getAddress(),dp.getPort());
+            
             ds.send(reply);
         }
         catch(SocketException e){
