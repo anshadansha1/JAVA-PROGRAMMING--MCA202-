@@ -1,0 +1,3 @@
+HEllo 
+This is a sample sourse file To show Use of 
+CommandLineArguments(CLA) to Copy content of a file.
