@@ -10,12 +10,13 @@ public class P68_UDPC_client {
         InetAddress shost=null;
         try{
             ds = new DatagramSocket();
-            byte[] m = "Bye".getBytes();
-            shost = InetAddress.getByName("localhost");
-            dp = new DatagramPacket(m,3,shost,1234);
-            ds.send(dp);
+            byte[] m = "Bye".getBytes(); //Preparing Data to Send
+            shost = InetAddress.getByName("localhost"); //Getting the InetAddress(IP) of the Server
+            dp = new DatagramPacket(m,3,shost,1234); //Creating DatagramPacket to Send
+            ds.send(dp); //Sending DatagramPacket
+
             byte[] buffer = new byte[1000];
-            reply = new DatagramPacket(buffer, buffer.length);
+            reply = new DatagramPacket(buffer, buffer.length);//Receiving Reply
             ds.receive(reply);
             System.out.println("\nReply : "+new String(reply.getData()).trim());
 
@@ -35,3 +36,9 @@ public class P68_UDPC_client {
         }
     }    
 }
+/*
+ OUTPUT :
+ E:\MCA\SEM 2\JAVA PROGRAMMING (MCA202)\class notes>java P68_UDPC_client
+
+Reply : From Server OK
+ */
