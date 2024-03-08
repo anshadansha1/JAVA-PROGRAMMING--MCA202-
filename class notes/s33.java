@@ -2,7 +2,7 @@
 
 import java.sql.*;
 
-public class sample3 {
+public class s33 {
     public static void main(String args[]){
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -16,7 +16,7 @@ public class sample3 {
             int i = ps.executeUpdate();
 
             System.out.println("\n"+i+" Record Inserted");
-            con.close();
+            con.close();//
 
         }
         catch(Exception e){
