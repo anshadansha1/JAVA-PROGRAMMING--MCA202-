@@ -17,6 +17,7 @@ public class P50_networking_client {
             System.out.println("\nServer says : "+str);
             sout.writeUTF("Bye"); //used to write a UTF-encoded string to the output stream.
             System.in.read();
+            cs.close();
         }   
         catch(Exception e){
             System.out.println("\nError : "+e);
