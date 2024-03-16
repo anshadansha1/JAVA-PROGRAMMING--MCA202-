@@ -1,6 +1,6 @@
-//PROGRAM : AWT ->TextField:
-//  1)getText()
-//  2)setText()
+//PROGRAM : AWT ->1)TextField:
+//  i)getText()
+//  ii)setText()
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
