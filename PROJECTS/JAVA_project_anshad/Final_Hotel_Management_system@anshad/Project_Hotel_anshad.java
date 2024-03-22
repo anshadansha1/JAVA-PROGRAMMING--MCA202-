@@ -79,9 +79,7 @@ public class Project_Hotel_anshad {
                 String guestName = guestNameField.getText();
                 int numOfGuests = Integer.parseInt(numOfGuestsField.getText());
                 int resId = hotelService.addReservation(guestName, numOfGuests);
-                // System.out.println("Reservation successful!\n Reservation ID is : " + res_id);
-                // System.out.println("Sorry, no available rooms for reservation.");
-                if (resId == -2) {
+                if (resId == -2 || resId == -1) {
                     JOptionPane.showMessageDialog(null, "Sorry, no available rooms for reservation.");
                 }
                 else{
@@ -118,8 +116,6 @@ public class Project_Hotel_anshad {
             public void actionPerformed(ActionEvent e) {
                 int reservationId = Integer.parseInt(reservationIdField.getText());
                 boolean cancelRes = hotelService.cancelReservation(reservationId);
-                // System.out.println("\nReservation with ID " + reservationId + " not found.");
-                // System.out.println("\nReservation with ID " + reservationId + " is Cancelled!");
                 if (cancelRes == false) {
                     JOptionPane.showMessageDialog(null, "Reservation with ID " + reservationId + " not found.");
                 }
@@ -149,15 +145,6 @@ public class Project_Hotel_anshad {
         guestNameSearchField = new JTextField();
         guestNameSearchField.setBounds(120, 20, 150, 25);
         panel.add(guestNameSearchField);
-
-        // JLabel dispOutputLabel = new JLabel("Room Number :");
-        // dispOutputLabel.setBounds(20, 50, 150, 25);
-        // panel.add(dispOutputLabel);
-
-        // dispOutput = new JTextField();
-        // dispOutput.setBounds(150, 50, 120, 25);
-        // panel.add(dispOutput);
-
         JButton findRoomButton = new JButton("Find Room");
         findRoomButton.setBounds(80, 60, 150, 25);
         findRoomButton.addActionListener(new ActionListener() {
@@ -165,7 +152,6 @@ public class Project_Hotel_anshad {
             public void actionPerformed(ActionEvent e) {
                 String guestName = guestNameSearchField.getText();
                 int guestRoom = hotelService.findRoom(guestName);
-                // dispOutput.setText("Room no: "+guestRoom);
                 if (guestRoom == -2) {
                     JOptionPane.showMessageDialog(null, "Sorry, there is no Room Reserved for the given Customer");
                 }
@@ -195,7 +181,10 @@ public class Project_Hotel_anshad {
         scrollPane.setBounds(20, 20, 460, 230);
         panel.add(scrollPane);
 
-        hotelService.displayAllReservationsInTextArea(reservationTextArea); // Display reservations in JTextArea
+        int chk = hotelService.displayAllReservationsInTextArea(reservationTextArea); // Display reservations in JTextArea
+        if (chk == -2) {
+            JOptionPane.showMessageDialog(null, "There are No reservations!");
+        }
 
         allReservationsFrame.add(panel);
         allReservationsFrame.setVisible(true);
@@ -214,8 +203,10 @@ public class Project_Hotel_anshad {
         scrollPane.setBounds(20, 20, 260, 130);
         panel.add(scrollPane);
 
-        hotelService.displayAvailableRoomsInTextArea(availableRoomsTextArea); // Display available rooms in JTextArea
-
+        int chk = hotelService.displayAvailableRoomsInTextArea(availableRoomsTextArea); // Display available rooms in JTextArea
+        if (chk == -2) {
+            JOptionPane.showMessageDialog(null, "There are No Rooms Available!");
+        }
         availableRoomsFrame.add(panel);
         availableRoomsFrame.setVisible(true);
     }
@@ -258,12 +249,10 @@ class HotelManagementService {
                 int res_id = rs.getInt("reservation_id");
 
                 str = "update rooms set is_booked = 1 where room_number = " + rs_chk + ";";
-                // System.out.println("Reservation successful!\n Reservation ID is : " + res_id);
                 st.executeUpdate(str);
                 return res_id;
                 
             } else {
-                // System.out.println("Sorry, no available rooms for reservation.");
                 return -2;
             }
         } catch (Exception e) {
@@ -291,14 +280,11 @@ class HotelManagementService {
 
                     str = "update rooms set is_booked = 0 where room_number = " + rm_no + ";";
                     st.executeUpdate(str);
-                    // System.out.println("\nReservation with ID " + reservationId + " is Cancelled!");
                     found = true;
-                    // break;
                     return true;
                 }
             }
             if (!found) {
-                // System.out.println("\nReservation with ID " + reservationId + " not found.");
                 return false;
             }
         } catch (Exception e) {
@@ -308,29 +294,8 @@ class HotelManagementService {
 
     }
 
-    public void displayAvailableRooms() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
-            Statement st = con.createStatement();
-            ResultSet rs;
-
-            String str = "SELECT * FROM rooms WHERE is_booked = 0";
-            rs = st.executeQuery(str);
-
-            System.out.println("\nAvailable Rooms ---------->");
-            while (rs.next()) {
-                int roomNumber = rs.getInt("room_number");
-                System.out.println("Room Number : " + roomNumber);
-                System.out.println("\n--------------------------------");
-            }
-        } catch (Exception e) {
-            System.out.println("\nError : " + e);
-        }
-    }
-
-    public void displayAllReservationsInTextArea(JTextArea textArea) {
+    public int displayAllReservationsInTextArea(JTextArea textArea) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
@@ -340,25 +305,32 @@ class HotelManagementService {
             ResultSet rs = st.executeQuery(str);
 
             StringBuilder sb = new StringBuilder();
+            boolean hasReservations = false; // Flag to check if there are reservations
             sb.append("Displaying All Reservations --------->\n");
             while (rs.next()) {
+                hasReservations = true; // Mark that there are reservations
                 int reservationId = rs.getInt("reservation_id");
                 int roomNumber = rs.getInt("room_number");
                 String guestName = rs.getString("guest_name");
                 int numberOfGuests = rs.getInt("number_of_guests");
-                sb.append("\nReservation ID: ").append(reservationId)
+                    sb.append("\nReservation ID: ").append(reservationId)
                         .append("\nGuest Name: ").append(guestName)
                         .append("\nRoom Number: ").append(roomNumber)
                         .append("\nNumber of Guests: ").append(numberOfGuests)
                         .append("\n-----------------\n");
+                
+            }
+            if (!hasReservations) {
+                return -2;
             }
             textArea.setText(sb.toString());
         } catch (Exception e) {
             System.out.println("\nError : " + e);
         }
+        return -1;
     }
 
-    public void displayAvailableRoomsInTextArea(JTextArea textArea) {
+    public int displayAvailableRoomsInTextArea(JTextArea textArea) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
@@ -368,16 +340,22 @@ class HotelManagementService {
             ResultSet rs = st.executeQuery(str);
 
             StringBuilder sb = new StringBuilder();
+            boolean hasRooms = false; // Flag to check if there are Rooms
             sb.append("Available Rooms ---------->\n");
             while (rs.next()) {
+                hasRooms = true; // Mark that there are Rooms
                 int roomNumber = rs.getInt("room_number");
                 sb.append("Room Number : ").append(roomNumber).append("\n");
                 sb.append("--------------------------------\n");
+            }
+            if (!hasRooms) {
+                return -2;
             }
             textArea.setText(sb.toString());
         } catch (Exception e) {
             System.out.println("\nError : " + e);
         }
+        return -1;
     }
 
     public int findRoom(String gname) {
@@ -393,14 +371,12 @@ class HotelManagementService {
                 int roomNumber = rs.getInt("room_number");
                 String guestName = rs.getString("guest_name");
                 if (guestName.equals(gname)) {
-                    // System.out.println("\nRoom Number of " + gname + " is : " + roomNumber);
                     found = true;
                     return roomNumber;
                 }
             }
 
             if (!found) {
-                // System.out.println("Sorry, there is no Room Reserved for the given Customer");
                 return -2;
             }
         } catch (Exception e) {
