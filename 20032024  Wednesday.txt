@@ -1,0 +1,28 @@
+20/03/2024 : Wednesday
+
+USING ECLIPSE
+--------------------------------------
+1.Open Eclipse
+2.FIle->New->Create a Java Project
+3.Untick module checkbox
+4.Next
+4.Finish
+5.To vew package explorer : Window->Show view->Project Explorer
+6.Right click on src->New->class  and give Name :"first".
+7.Right click ->run as->
+8.right click on root ->close project
+
+--------------------------------------
+
+USING NetBeans :
+
+1.Open NetBeans
+2.CLick File->New Project
+3.Right click Source Package ->New ->Jpanel Form
+4.Add label Form,username,password ,TextField,Password Field ,two buttons (Login and Cancel).
+5.	=>Right click on first TextField -> Change Variable Name ->"tuname"
+	=>Right click on passeord Field -> Change Variable Name ->"tpwd"
+	=>Right click on Login Button -> Change Variable Name ->"blogin"
+	=>Right click on Cancel Button-> Change Variable Name ->"bcancel"
+
+6.Double click on cancel button and write: "System.exit(0);"
